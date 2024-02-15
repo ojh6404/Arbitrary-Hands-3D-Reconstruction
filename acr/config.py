@@ -180,7 +180,7 @@ def parse_args(input_args=None):
     debug_group = parser.add_argument_group(title='Debug options')
     debug_group.add_argument('--track_memory_usage',type = bool,default = False)
 
-    parsed_args = parser.parse_args(args=input_args)
+    parsed_args = parser.parse_known_args(input_args)[0]
     parsed_args.adjust_lr_epoch = []
     parsed_args.kernel_sizes = [5]
     config_yml_path = os.path.join(project_dir, parsed_args.configs_yml)

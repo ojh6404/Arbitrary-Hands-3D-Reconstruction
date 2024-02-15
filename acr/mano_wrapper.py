@@ -14,12 +14,14 @@ from mano.manolayer import ManoLayer
 class MANOWrapper(nn.Module):
     def __init__(self):
         super(MANOWrapper,self).__init__()
+        self.root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.mano_root = os.path.join(self.root_dir, 'mano')
         self.mano_layer=nn.ModuleDict({
             'r':ManoLayer(
                     ncomps=45,
                     center_idx=args().align_idx if args().mano_mesh_root_align else None,
                     side='right',
-                    mano_root='mano/',
+                    mano_root=self.mano_root,
                     use_pca=False,
                     flat_hand_mean=False,
                 ),
@@ -27,7 +29,7 @@ class MANOWrapper(nn.Module):
                     ncomps=45,
                     center_idx=args().align_idx if args().mano_mesh_root_align else None,
                     side='left',
-                    mano_root='mano/',
+                    mano_root=self.mano_root,
                     use_pca=False,
                     flat_hand_mean=False,
                 )
