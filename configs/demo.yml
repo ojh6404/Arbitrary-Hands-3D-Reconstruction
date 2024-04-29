@@ -12,6 +12,7 @@ ARGS:
  renderer: 'pyrender'
  focal_length: 1265
  FOV: 22.5
+ centermap_conf_thresh: 0.7
 
  mesh_cloth: 'ghostwhite'  #'LightCyan'
 
